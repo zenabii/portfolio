@@ -1,0 +1,38 @@
+@include media-md {
+}
+
+@include media-lg {
+  .menu-btn {
+    visibility: hidden;
+  }
+
+  .nav {
+    visibility: visible;
+
+    .menu-nav {
+      display: block;
+      transform: translateY(0);
+      height: 100%;
+      background: transparent;
+      text-align: right;
+
+      &__item {
+        display: inline;
+        padding-right: 1.5rem;
+      }
+
+      &__link {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  main > .project_container {
+    grid-template-columns: 1fr 1fr;
+    max-width: 1100px;
+  }
+
+  .project_container > .text_container {
+    margin: 0;
+  }
+}

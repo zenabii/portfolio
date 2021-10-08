@@ -1,3 +1,107 @@
+@import "config";
+@import "menu";
+@import "responsive";
+
 html {
+  background-color: #000;
+}
+
+body {
   color: #fff;
+  height: 100vh;
+  font-family: "Oswald", sans-serif;
+  line-height: 1;
+}
+
+main {
+  padding-bottom: 30px;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+
+a {
+  color: $secondary-color;
+  text-decoration: none;
+}
+
+header {
+  z-index: 2;
+  width: 100%;
+  padding: 1rem;
+}
+
+h1,
+h2 {
+  text-transform: uppercase;
+  font-family: "Bebas Neue";
+  font-size: 3.5rem;
+  letter-spacing: 0.2rem;
+}
+
+h2,
+p {
+  margin-top: 10px;
+}
+
+p {
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+img {
+  height: 414px;
+}
+
+.logo {
+  width: 230px;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: baseline;
+  z-index: 1;
+  position: relative;
+}
+
+.button {
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: none;
+  text-transform: uppercase;
+  font-family: "Bebas Neue";
+  font-size: 1rem;
+  background-color: $secondary-color;
+  color: $primary-color;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.button:hover {
+  background-color: $hover-color;
+  color: #000;
+}
+
+.button_container {
+  width: 400px;
+  margin-top: 50px;
+}
+
+.text_container {
+  width: 100%;
+  padding: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.image_container {
+  margin: 0 auto;
+}
+
+.project_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 100px auto;
 }
