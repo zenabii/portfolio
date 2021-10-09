@@ -158,109 +158,107 @@
         <div class="illustration_container">
             <h4>Cart counter</h4>
             <pre><code>
-                const cartCounter = document.querySelector("#cartCount");
+  const cartCounter = document.querySelector("#cartCount");
 
-                function updateCartCount(){
-                    var cartContent = JSON.parse(localStorage.getItem("cartContent") || "[]");
-                    cartCounter.innerHTML = cartContent.length
-                }
-                
-                updateCartCount();        
+  function updateCartCount(){
+      var cartContent = JSON.parse(localStorage.getItem("cartContent") || "[]");
+      cartCounter.innerHTML = cartContent.length
+  }
+  
+  updateCartCount();        
                 </code></pre>
                 <h4>Preview and add to cart</h4>
                 <pre><code>
-                    const jacket = document.querySelector(".jacket");
-                    const productTitle = document.querySelector("title").innerHTML = "Product details";
-                    const price = document.querySelector(".price");
-                    const info = document.querySelector(".all-info-text");
-                    const title = document.querySelector(".product-title");
-                    
-                    const params = new URLSearchParams(window.location.search);
-                    const productId = params.get("id");
-                    const url = "https://ca.zenabi.no/wp-json/wc/store/products/" + productId;
-                    
-                    async function getProduct(url) {
-                        const response = await fetch(url);
-                        const product = await response.json();
-                    
-                    
-                        price.innerHTML = product.prices.price + ",-"
-                        info.innerHTML = product.description
-                        title.innerHTML = product.name
-                    
-                        jacket.innerHTML += `
-                        < div class="second-details">< img src="${product.images[0].src}" class="imgproduct"> < / div >
-                        `;
-                        const addTo = document.querySelector(".buttons-purchase");
-                        addTo.onclick = (e) => addToCart(product);
-                    }
-                    
-                    function addToCart(product) {
-                        var cartContent = JSON.parse(localStorage.getItem("cartContent") || "[]");
-                        cartContent.push(product);
-                        localStorage.setItem("cartContent",JSON.stringify(cartContent));
-                        updateCartCount(cartContent.length);
-                    }
-                    
-                    function updateCartCount(count){
-                        const cartCounter = document.querySelector("#cartCount");
-                        cartCounter.innerHTML = count
-                    }
-                    
-                    getProduct(url);                          
+  const jacket = document.querySelector(".jacket");
+  const productTitle = document.querySelector("title").innerHTML = "Product details";
+  const price = document.querySelector(".price");
+  const info = document.querySelector(".all-info-text");
+  const title = document.querySelector(".product-title");
+  
+  const params = new URLSearchParams(window.location.search);
+  const productId = params.get("id");
+  const url = "https://ca.zenabi.no/wp-json/wc/store/products/" + productId;
+  
+  async function getProduct(url) {
+      const response = await fetch(url);
+      const product = await response.json();
+  
+  
+      price.innerHTML = product.prices.price + ",-"
+      info.innerHTML = product.description
+      title.innerHTML = product.name
+  
+      jacket.innerHTML += `
+      < div class="second-details">< img src="${product.images[0].src}" class="imgproduct"> < / div >
+      `;
+      const addTo = document.querySelector(".buttons-purchase");
+      addTo.onclick = (e) => addToCart(product);
+  }
+  
+  function addToCart(product) {
+      var cartContent = JSON.parse(localStorage.getItem("cartContent") || "[]");
+      cartContent.push(product);
+      localStorage.setItem("cartContent",JSON.stringify(cartContent));
+      updateCartCount(cartContent.length);
+  }
+  
+  function updateCartCount(count){
+      const cartCounter = document.querySelector("#cartCount");
+      cartCounter.innerHTML = count
+  }
+  
+  getProduct(url);                          
                     </code></pre>
                     <h4>Empty cart</h4>
                     <pre><code>
-                        var sumTotal = 0;
-                        const checkoutQuantity = document.querySelector("#quantity");
-                        const cartProducts = document.querySelector("#cartProducts");
-                        const cartEmpty = document.querySelector(".contact-press-empty")
-                        var cartContent = JSON.parse(localStorage.getItem("cartContent") || "[]");
-                        const continueShopping = document.querySelector(".empty_cart");
-                        
-                        function getCartContent() {
-                            if (cartContent) { 
-                                cartProducts.innerHTML = ``
-                                sumTotal = 0;
-                                for (const key in cartContent) {
-                                    if (Object.hasOwnProperty.call(cartContent, key)) {
-                                        const product = cartContent[key];
-                                        sumTotal += parseInt(product.prices.price);
-                                        const output = `
-                                        < div>
-                                            < img src="${product.images[0].src}" alt="purchased product" class="cartJacket">
-                                            < h5 id="productTitle">${product.name}</ h5>
-                                        </ div>
-                                        `;
-                                        cartProducts.innerHTML += output;
-                                    }
-                                }
-                                if (checkoutQuantity) {
-                                    checkoutQuantity.innerHTML = cartContent.length + " artikler";
-                                    const total = document.querySelector("#total");
-                                    total.innerHTML = sumTotal + " kr";   
-                                }
-                            }
-                        }
-                        
-                        getCartContent();
-                        
-                        function emptyCart() {
-                            localStorage.removeItem("cartContent");
-                            cartContent = [];
-                            getCartContent();
-                            updateCartCount();
-                        }
-                        
-                        if (cartEmpty) {
-                            cartEmpty.onclick = emptyCart
-                        }
-                        if (continueShopping) {
-                            continueShopping.onclick = emptyCart
-                        
-                        }
-                        
-                              
+var sumTotal = 0;
+const checkoutQuantity = document.querySelector("#quantity");
+const cartProducts = document.querySelector("#cartProducts");
+const cartEmpty = document.querySelector(".contact-press-empty")
+var cartContent = JSON.parse(localStorage.getItem("cartContent") || "[]");
+const continueShopping = document.querySelector(".empty_cart");
+
+function getCartContent() {
+    if (cartContent) { 
+        cartProducts.innerHTML = ``
+        sumTotal = 0;
+        for (const key in cartContent) {
+            if (Object.hasOwnProperty.call(cartContent, key)) {
+                const product = cartContent[key];
+                sumTotal += parseInt(product.prices.price);
+                const output = `
+                < div>
+                    < img src="${product.images[0].src}" alt="purchased product" class="cartJacket">
+                    < h5 id="productTitle">${product.name}</ h5>
+                </ div>
+                `;
+                cartProducts.innerHTML += output;
+            }
+        }
+        if (checkoutQuantity) {
+            checkoutQuantity.innerHTML = cartContent.length + " artikler";
+            const total = document.querySelector("#total");
+            total.innerHTML = sumTotal + " kr";   
+        }
+    }
+}
+
+getCartContent();
+
+function emptyCart() {
+    localStorage.removeItem("cartContent");
+    cartContent = [];
+    getCartContent();
+    updateCartCount();
+}
+
+if (cartEmpty) {
+    cartEmpty.onclick = emptyCart
+}
+if (continueShopping) {
+    continueShopping.onclick = emptyCart
+
+}                    
                         </code></pre>
       </section>
     </main>
