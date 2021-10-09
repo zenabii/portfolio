@@ -35,4 +35,19 @@
   .project_container > .text_container {
     margin: 0;
   }
+
+  .introduction_container > .paragraph_container {
+    padding: 50px 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 900px;
+  }
+
+  .paragraph_container > .text_column {
+    width: 400px;
+  }
+
+  .image_styling {
+    max-width: 100%;
+  }
 }
