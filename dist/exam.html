@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200;300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -122,48 +123,48 @@
             <img src="img/newsletter_main.jpg"alt="newsletter sign up on the main page"class="image_styling"/>
           </div>
         <div class="illustration_container">
-                <h4>newsletter function</h4>
-                <pre><code>
+        <h4>newsletter function</h4>
+        <pre><code>
 const form = document.querySelector("#confirmation_container");
 const email = document.querySelector("#newsletteremail");
 const emailError = document.querySelector("#emailError");
 
 
 function validateForm(event) {
-    var pass = true 
-    event.preventDefault();
+var pass = true 
+event.preventDefault();
 
-    if (validateEmail(email.value) === true) {
-        emailError.style.display = "none";
-    } else {
-        emailError.style.display = "block";
-        pass = false
-    }
+if (validateEmail(email.value) === true) {
+emailError.style.display = "none";
+} else {
+emailError.style.display = "block";
+pass = false
+}
 
-    if (pass === true) {
-        alert("Thank you for signing up to our newsletter!");
-        submitData();
-        event.target.reset();
-    }
+if (pass === true) {
+alert("Thank you for signing up to our newsletter!");
+submitData();
+event.target.reset();
+}
 }
 
 form.addEventListener("submit", validateForm);
 
 function submitData() {
-    fetch ("https://projectexam.zenabi.no/wp-json/contact-form-7/v1/contact-forms/166/feedback", {
-        method: "POST",
-        body: new FormData(form)
-    })
+fetch ("https://projectexam.zenabi.no/wp-json/contact-form-7/v1/contact-forms/166/feedback", {
+method: "POST",
+body: new FormData(form)
+})
 }
 
 function validateEmail(email) {
-    const regEx = /\S+@\S+\.\S+/;
-    const patternMatches = regEx.test(email);
-    return patternMatches;
+const regEx = /\S+@\S+\.\S+/;
+const patternMatches = regEx.test(email);
+return patternMatches;
 }
-                    </code></pre>
-                    <h4>contact form</h4>
-                    <pre><code>
+        </code></pre>
+        <h4>contact form</h4>
+        <pre><code>
 const form = document.querySelector("#contactForm");
 const Name = document.querySelector("#Name");
 const nameError = document.querySelector("#nameError");
@@ -176,68 +177,71 @@ const messageError = document.querySelector("#messageError");
 
 
 function validateForm(event) {
-    var pass = true 
-    event.preventDefault();
+var pass = true 
+event.preventDefault();
 
-    if (checkLength(Name.value, 4) === true) {
-        nameError.style.display = "none";
-    } else {
-        nameError.style.display = "block";
-        pass = false
-    }
+if (checkLength(Name.value, 4) === true) {
+nameError.style.display = "none";
+} else {
+nameError.style.display = "block";
+pass = false
+}
 
-    if (checkLength(subject.value, 14) === true) {
-        subjectError.style.display = "none";
-    } else {
-        subjectError.style.display = "block";
-        pass = false
-    }
+if (checkLength(subject.value, 14) === true) {
+subjectError.style.display = "none";
+} else {
+subjectError.style.display = "block";
+pass = false
+}
 
-    if (validateEmail(email.value) === true) {
-        emailError.style.display = "none";
-    } else {
-        emailError.style.display = "block";
-        pass = false
-    }
-    if (checkLength(message.value, 24) === true) {
-        messageError.style.display = "none";
-    } else {
-        messageError.style.display = "block";
-        pass = false
-    }
+if (validateEmail(email.value) === true) {
+emailError.style.display = "none";
+} else {
+emailError.style.display = "block";
+pass = false
+}
+if (checkLength(message.value, 24) === true) {
+messageError.style.display = "none";
+} else {
+messageError.style.display = "block";
+pass = false
+}
 
-    if (pass === true) {
-        alert("Thank you for your message! We usually respond within 48 hours.");
-        submitData();
-        event.target.reset();
-    }
+if (pass === true) {
+alert("Thank you for your message! We usually respond within 48 hours.");
+submitData();
+event.target.reset();
+}
 }
 
 function submitData() {
-    fetch ("https://projectexam.zenabi.no/wp-json/contact-form-7/v1/contact-forms/5/feedback", {
-        method: "POST",
-        body: new FormData(form)
-    })
+fetch ("https://projectexam.zenabi.no/wp-json/contact-form-7/v1/contact-forms/5/feedback", {
+method: "POST",
+body: new FormData(form)
+})
 }
 
 
 form.addEventListener("submit", validateForm);
 
 function checkLength(value, len) {
-    if (value.trim().length > len) {
-        return true;
-    } else {
-        return false;
-    }
+if (value.trim().length > len) {
+return true;
+} else {
+return false;
+}
 }
 
 function validateEmail(email) {
-    const regEx = /\S+@\S+\.\S+/;
-    const patternMatches = regEx.test(email);
-    return patternMatches;
+const regEx = /\S+@\S+\.\S+/;
+const patternMatches = regEx.test(email);
+return patternMatches;
 }
-                        </code></pre>
+        </code></pre>
       </section>
+      <div class="back-to-top">
+        <a href="#top"><i class="fas fa-chevron-circle-up"></i></label></i></a>
+    </div>
     </main>
     <script src="js/main.js"></script>
   </body>

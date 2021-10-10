@@ -144,3 +144,22 @@ pre {
 .img_container {
   margin-top: 50px;
 }
+
+.back-to-top {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0px;
+}
+
+.back-to-top i {
+  font-size: 2em;
+  color: #fff;
+}
+
+.back-to-top i:hover {
+  color: #5f5f5f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
